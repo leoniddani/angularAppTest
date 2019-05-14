@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
+  <div *ngIf="errorResponse" class="alert alert-danger" role="alert">
+    <strong>User Not Found!</strong>.
+  </div>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && conrolsCheck.email.errors }" />
+    <div *ngIf="submitted && conrolsCheck.email.errors" class="invalid-feedback">
+      <div *ngIf="conrolsCheck.email.errors.required">Email is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && conrolsCheck.password.errors }" />
+    <div *ngIf="submitted && conrolsCheck.password.errors" class="invalid-feedback">
+      <div *ngIf="conrolsCheck.password.errors.required">Password is required</div>
+    </div>
+  </div>
+
+  <button [disabled]="loading" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
