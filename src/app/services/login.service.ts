@@ -8,13 +8,13 @@ import { Router } from "@angular/router";
 
 @Injectable()
 export class LoginService {
-  public url= "http://localhost:3000/";
+  public url= "http://localhost:8080/";
+
+  public USER_OBJECT: object;
   constructor(
     private http: HttpClient,
     private router: Router
-  ) {
-
-  }
+  ) { }
 
 
   login(email: string, password: string) {
@@ -23,14 +23,15 @@ export class LoginService {
       headers: new HttpHeaders({
       'Content-Type':  'application/json'
       }),
-      params:  new  HttpParams()
+      params: new  HttpParams()
         .set('email', email)
         .set('password', password)
     };
 
-    return this.http.get<any>(this.url+"/login",options)
+    return this.http.get<any>(this.url+"user/login",options)
       .pipe(map(user => {
-        return user;
+        this.USER_OBJECT = user;
+        return this.USER_OBJECT;
       }))
   }
 

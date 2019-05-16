@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginService } from "../services/login.service";
 
+import { Observable } from "rxjs";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   errorResponse = false;
   error = '';
+  user: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,13 +50,11 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          let message = data.message;
-          if(message == "User Not Found!"){
-            this.loading = false;
-            this.errorResponse = true;
+          this.user = data;
+          if( this.user.id ){
+            this.router.navigate(['/dashboard']);
           }else {
-
-              this.router.navigate(['/']);
+            this.router.navigate(['/login']);
 
           }
 
