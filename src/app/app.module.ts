@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from "./login/login.component";
 
 import { LoginService } from "./services/login.service";
+import { ProductService } from "./services/product.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UserProductsComponent } from './user-products/user-products.component';
@@ -30,7 +31,8 @@ import { UserProductsComponent } from './user-products/user-products.component';
     HttpClientModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

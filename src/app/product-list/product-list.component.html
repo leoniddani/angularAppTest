@@ -6,49 +6,24 @@
         <thead class="">
         <tr>
           <th>#</th>
+          <th>Check</th>
           <th>Name</th>
-          <th>Registration Date</th>
-          <th>E-mail address</th>
-          <th>Premium Plan</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>
-            <label class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input">
-              <span class="custom-control-indicator"></span>
-            </label>
-          </td>
-          <td>John Lilki</td>
-          <td>September 14, 2013</td>
-          <td>jhlilk22@yahoo.com</td>
-          <td>No</td>
-        </tr>
-        <tr>
-          <td>
-            <label class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input">
-              <span class="custom-control-indicator"></span>
-            </label>
-          </td>
-          <td>John Lilki</td>
-          <td>September 14, 2013</td>
-          <td>jhlilk22@yahoo.com</td>
-          <td>No</td>
-        </tr>
-        <tr>
-          <td>
-            <label class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input">
-              <span class="custom-control-indicator"></span>
-            </label>
-          </td>
-          <td>John Lilki</td>
-          <td>September 14, 2013</td>
-          <td>jhlilk22@yahoo.com</td>
-          <td>No</td>
-        </tr>
+        <form (ngSubmit)="makeRequest()">
+          <tr *ngFor="let product of getProducts">
+            <td>
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <input type="hidden" value="{{product.id}}">
+                <span class="custom-control-indicator"></span>
+              </label>
+            </td>
+            <td>{{product.name}}</td>
+          </tr>
+        </form>
+          <button type="submit">Submit!</button>
         </tbody>
       </table>
     </div>

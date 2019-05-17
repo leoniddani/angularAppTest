@@ -11,13 +11,17 @@ import {map} from "rxjs/operators";
 export class UserProductsComponent implements OnInit {
   public getProducts: Observable<ProductService>;
   constructor(
-    public productService
+    public productService: ProductService
   ) { }
 
   ngOnInit() {
-    this.productService.getUserProducts().pipe(map(data=>data)).subscribe(data=>
-      this.getProducts = data
+    this.productService.getUserProducts().pipe(data=> data).subscribe(data=>{
+      this.getProducts = data.products;
+      console.log(this.getProducts);
+    }
     );
   }
+
+
 
 }

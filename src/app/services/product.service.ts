@@ -43,7 +43,7 @@ export class ProductService {
       })
     };
 
-    return this.http.post<any>(this.url+`api/adduser/${this.userObject.user.id}`,obj,options)
+    return this.http.post<any>(this.url+`orders/save/${this.userObject.user.id}`,obj,options)
       .pipe(map(products => {
         if (products) {
           return products;
